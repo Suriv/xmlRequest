@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+	<sensor>
+		<id>01</id>
+		<name>one</name>
+		<temp>26.68</temp>
+	</sensor>
+	<sensor>
+		<id>----------------</id>
+		<name> </name>
+		<temp>---</temp>
+	</sensor>	
+	<sensor>
+		<id>----------------</id>
+		<name> </name>
+		<temp>---</temp>
+	</sensor>
+	<sensor>
+		<id>----------------</id>
+		<name> </name>
+		<temp>---</temp>
+	</sensor>	
+	<version>
+		<model>Custom</model>
+		<ver>1.0</ver>
+	</version>
+</response>

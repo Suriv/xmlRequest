@@ -1,0 +1,11 @@
+{
+  "name": "sensor",
+  "description": "sensor",
+  "version": "0.0.1",
+  "main": "server.js",
+  "author": "Suriv",
+  "dependencies": {
+    "express": "latest",
+    "request": "latest"
+  }
+}
