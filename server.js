@@ -5,8 +5,8 @@ const port = 3000;
 const HttpUtils = require("./HttpUtils");
 
 //Configuration
-const sensorAddress = 'http://localhost:3000/status.xml';
-//const sensorAddress = 'http://192.168.1.136/~sortiz/medir/status.xml';
+// url Sensor
+const sensorAddress = 'http://192.168.1.136/status.xml';
 
 app.use(express.static(__dirname + '/app' ));
 app.get('/sensor', function(req,res) {

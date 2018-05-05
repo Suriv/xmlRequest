@@ -14,7 +14,7 @@
 </head>
 
 <body cz-shortcut-listen="true">
-
+<h2>Sensor Temp</h2>
 <div class="sensor">
   <p></p>
 </div>
@@ -24,33 +24,38 @@
 <script src="js/jquery.min.js"></script>
 <script> 
   $(function() {
+     console.log('dd');
 
     var minuts = 1,
-        // intervalTime = 1000 * 60 * minuts,
-        intervalTime = 1000,
+       // intervalTime = 1000 * 60 * minuts,
+        intervalTime = 4000,
         difTemp = 0;
 
-   // ajaxSensor(difTemp);
-   // setInterval('ajaxSensor('+difTemp+')',intervalTime);
+   ajaxSensor(difTemp);
+   setInterval('ajaxSensor('+difTemp+')',intervalTime);
        
 });
 
 
   function ajaxSensor(difTemp){
+   
         $.ajax({
               type: "GET",
-              url: '/sensor.xml',
-              dataType: "xml",
-              success: function(xml){
-                console.log(xml);
-                 var tempSensor = $(xml).find('sensor:nth-child(1)').find('temp').text(),
-                      tempResult = tempSensor - difTemp;
+              url: '/sensor',
+              dataType: "json",
+               success:function(json){
 
-                 $(".sensor p").html(tempResult.toFixed(2)+'°');
-              }
+            var temp = json.temp,
+                tempResult;
+
+            console.log(temp);
+            tempResult = temp - difTemp;
+             $(".sensor p").html(tempResult.toFixed(2)+'°');
+         },
+         error:function(){
+             console.log('no funciona');
+         }
         });
-       return false;
-
 }
 
 </script>
