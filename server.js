@@ -1,26 +1,38 @@
 const http = require('http');
 const express = require('express');
-const request = require('request');
 const app = express();
-const path = require('path');
-const port = 3000
+const port = 3000;
+const HttpUtils = require("./HttpUtils");
 
-
-
+//Configuration
+const sensorAddress = 'http://localhost:3000/status.xml';
+//const sensorAddress = 'http://192.168.1.136/~sortiz/medir/status.xml';
 
 app.use(express.static(__dirname + '/app' ));
-app.get('/sensor.xml', function(req,res){
+app.get('/sensor', function(req,res) {
 
-	var url = 'url/status.xml';
+	var parseString = require('xml2js').parseString;
+	var REST = new HttpUtils();
 
-	res.send(request(url, function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            return body;
-        }
-    }));
- 
+	const options = {
+  	method: "GET",
+    url: sensorAddress,
+    headers: {}
+	};
+
+	REST.request(options, 200, false).then(function (result) {
+
+	  parseString(result, function (err, result) {
+	      var temp = result.response.sensor[0].temp[0];
+				res.end(JSON.stringify({
+			  	temp : parseFloat(temp)
+				}));
+	  });
+
+	});
+
 });
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log('Server running on port 3000');
 });
