@@ -24,20 +24,18 @@
 <script src="js/jquery.min.js"></script>
 <script> 
   $(function() {
-     console.log('dd');
-
     var minuts = 1,
        // intervalTime = 1000 * 60 * minuts,
         intervalTime = 4000,
         difTemp = 0;
 
-   ajaxSensor(difTemp);
-   setInterval('ajaxSensor('+difTemp+')',intervalTime);
+   sensorTemp(difTemp);
+   setInterval('sensorTemp('+difTemp+')',intervalTime);
        
 });
 
 
-  function ajaxSensor(difTemp){
+  function sensorTemp(difTemp){
    
         $.ajax({
               type: "GET",
