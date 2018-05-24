@@ -3,7 +3,7 @@
 	<sensor>
 		<id>01</id>
 		<name>one</name>
-		<temp>22.68</temp>
+		<temp>21.68</temp>
 	</sensor>
 	<sensor>
 		<id>----------------</id>
